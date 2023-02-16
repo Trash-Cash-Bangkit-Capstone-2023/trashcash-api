@@ -5,7 +5,7 @@
   "main": "main.js",
   "license": "MIT",
   "scripts": {
-    "dev": "node src/main.js"
+    "dev": "nodemon src/main.js"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.8.0",
@@ -15,5 +15,7 @@
   "engines": {
     "node": "16.x.x"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
 }

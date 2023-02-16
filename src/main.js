@@ -6,7 +6,8 @@ const fastify = require("fastify")({ logger: true });
 fastify.get("/", async (request, reply) => {
   const { data: bookings, error } = await supabase.from("bookings").select("*");
 
-  return { bookings };
+  // reply.code(201).send({ message: "SosOSOSO" });
+  reply.code(404).send({ message: "Something error" });
 });
 
 // Run the server!
