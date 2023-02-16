@@ -5,12 +5,13 @@
   "main": "main.js",
   "license": "MIT",
   "scripts": {
-    "dev": "node main.js"
+    "dev": "node src/main.js"
   },
   "engines": {
     "node": "16.x.x"
   },
   "dependencies": {
     "fastify": "^4.13.0"
-  }
+  },
+  "devDependencies": {}
 }
