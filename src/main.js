@@ -1,8 +1,12 @@
+require("dotenv").config();
+const supabase = require("./services/supabase");
 const fastify = require("fastify")({ logger: true });
 
 // Declare a route
 fastify.get("/", async (request, reply) => {
-  return { hello: "world" };
+  const { data: bookings, error } = await supabase.from("bookings").select("*");
+
+  return { bookings };
 });
 
 // Run the server!
