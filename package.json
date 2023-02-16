@@ -1,0 +1,16 @@
+{
+  "name": "booking-api",
+  "version": "1.0.0",
+  "description": "Booking api for yellotek booking engine",
+  "main": "main.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "node main.js"
+  },
+  "engines": {
+    "node": "16.x.x"
+  },
+  "dependencies": {
+    "fastify": "^4.13.0"
+  }
+}
