@@ -1,8 +1,13 @@
 require("dotenv").config();
 const supabase = require("./services/supabase");
 const fastify = require("fastify")({ logger: true });
+const cors = require("@fastify/cors");
 
 // Declare a route
+fastify.register(cors, {
+  origin: ["http://locahost"],
+});
+
 fastify.get("/", async (request, reply) => {
   const { data: bookings, error } = await supabase.from("bookings").select("*");
 

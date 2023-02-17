@@ -8,9 +8,13 @@
     "dev": "nodemon src/main.js"
   },
   "dependencies": {
+    "@fastify/cors": "^8.2.0",
     "@supabase/supabase-js": "^2.8.0",
+    "date-fns": "^2.29.3",
+    "date-fns-tz": "^2.0.0",
     "dotenv": "^16.0.3",
-    "fastify": "^4.13.0"
+    "fastify": "^4.13.0",
+    "lodash": "^4.17.21"
   },
   "engines": {
     "node": "16.x.x"
