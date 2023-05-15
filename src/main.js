@@ -1,4 +1,5 @@
 require("dotenv").config();
+const postRoutes = require("./app/post/routes");
 const supabase = require("./services/supabase");
 const fastify = require("fastify")({ logger: true });
 const cors = require("@fastify/cors");
@@ -9,11 +10,10 @@ fastify.register(cors, {
 });
 
 fastify.get("/", async (request, reply) => {
-  const { data: bookings, error } = await supabase.from("bookings").select("*");
-
-  // reply.code(201).send({ message: "SosOSOSO" });
-  reply.code(404).send({ message: "Something error" });
+  reply.code(200).send({ message: "Hello from Trash Cash!" });
 });
+
+fastify.register(postRoutes, { prefix: "/v1" });
 
 // Run the server!
 const PORT = 8000;

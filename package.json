@@ -17,7 +17,7 @@
     "lodash": "^4.17.21"
   },
   "engines": {
-    "node": "16.x.x"
+    "node": ">= 16.x.x && <= 18.x.x"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
