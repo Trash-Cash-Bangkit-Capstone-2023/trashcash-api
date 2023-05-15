@@ -1,6 +1,5 @@
 require("dotenv").config();
 const postRoutes = require("./app/post/routes");
-const supabase = require("./services/supabase");
 const fastify = require("fastify")({ logger: true });
 const cors = require("@fastify/cors");
 
