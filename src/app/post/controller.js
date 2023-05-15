@@ -11,6 +11,7 @@ const postSchema = {
     quantity: { type: "number" },
     user: { type: "string" }, // Relation
     createdAt: { type: "string" },
+    iamge: { type: "string" },
   },
 };
 

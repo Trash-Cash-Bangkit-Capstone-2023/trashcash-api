@@ -11,6 +11,7 @@ const dummyPosts = [
     quantity: 3,
     user: dummyUsers[0],
     createdAt: "2021-01-01T00:00:00.000Z",
+    image: "https://picsum.photos/500?random=1",
   },
   {
     id: "2",
@@ -22,6 +23,7 @@ const dummyPosts = [
     quantity: 3,
     user: dummyUsers[1],
     createdAt: "2021-01-01T00:00:00.000Z",
+    image: "https://picsum.photos/500?random=2",
   },
   {
     id: "3",
@@ -33,6 +35,7 @@ const dummyPosts = [
     quantity: 1,
     user: dummyUsers[2],
     createdAt: "2021-01-01T00:00:00.000Z",
+    image: "https://picsum.photos/500?random=3",
   },
 ];
 

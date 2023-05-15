@@ -5,7 +5,7 @@ const cors = require("@fastify/cors");
 
 // Declare a route
 fastify.register(cors, {
-  origin: ["http://locahost"],
+  origin: ["*"],
 });
 
 fastify.get("/", async (request, reply) => {
@@ -15,8 +15,8 @@ fastify.get("/", async (request, reply) => {
 fastify.register(postRoutes, { prefix: "/v1" });
 
 // Run the server!
-const PORT = 8000;
-const HOST = "0.0.0.0";
+const PORT = process.env.PORT || 8000;
+const HOST = process.env.HOST || "0.0.0.0";
 
 const start = async () => {
   try {
