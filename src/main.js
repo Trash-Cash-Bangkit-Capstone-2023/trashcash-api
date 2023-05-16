@@ -5,11 +5,11 @@ const cors = require("@fastify/cors");
 
 // Declare a route
 fastify.register(cors, {
-  origin: ["*"],
+  origin: ["*"], // TODO : Change into domain or ip later on
 });
 
 fastify.get("/", async (request, reply) => {
-  reply.code(200).send({ message: "Hello from Trash Cash!" });
+  reply.send({ message: "Hello World" });
 });
 
 fastify.register(postRoutes, { prefix: "/v1" });
