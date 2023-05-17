@@ -1,4 +1,5 @@
 require("dotenv").config();
+require("./services/firebase"); // Initialize firebase admin
 const postRoutes = require("./app/post/routes");
 const fastify = require("fastify")({ logger: true });
 const cors = require("@fastify/cors");
