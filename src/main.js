@@ -3,6 +3,8 @@ require("./services/firebase"); // Initialize firebase admin
 const postRoutes = require("./app/post/routes");
 const fastify = require("fastify")({ logger: true });
 const cors = require("@fastify/cors");
+const posts = require("./data/dummy-posts")
+const users = require("./data/dummy-users")
 
 // Declare a route
 fastify.register(cors, {
@@ -11,6 +13,38 @@ fastify.register(cors, {
 
 fastify.get("/", async (request, reply) => {
   reply.send({ message: "Hello World" });
+});
+
+fastify.get("/user/:id", async (request, reply) => {
+  const { id } = request.params;
+  const data = users.find((item) => item.id == id)
+  reply.code(200).send({
+    message: "Success",
+    data: {
+      data,
+    },
+  });
+});
+
+fastify.get("/user/posts", async (request, reply) => {
+  // const { id } = request.params;
+
+  reply.code(200).send({
+    message: "Success",
+    data: {
+      posts,
+    },
+  });
+});
+fastify.get("/user/posts/:id", async (request, reply) => {
+  const { id } = request.params;
+  const data = posts.find((item) => item.id == id);
+  reply.code(200).send({
+    message: "Success",
+    data: {
+      data,
+    },
+  });
 });
 
 fastify.register(postRoutes, { prefix: "/v1" });
