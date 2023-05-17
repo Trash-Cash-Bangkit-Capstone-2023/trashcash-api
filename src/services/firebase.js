@@ -6,4 +6,5 @@ firebaseAdmin.initializeApp({
 });
 
 const firestore = firebaseAdmin.firestore();
-module.exports = { firebaseAdmin, firestore };
+const auth = firebaseAdmin.auth();
+module.exports = { firebaseAdmin, firestore, auth };
