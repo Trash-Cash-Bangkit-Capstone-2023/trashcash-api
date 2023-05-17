@@ -63,7 +63,45 @@ const PostController = {
     });
   },
   async create(req, reply) {
-    reply.send({ message: "Create" });
+    const { title, description, category, tags, quantity, user_id, image } =
+      req.body;
+
+    // TODO : Add upload to storage bucket function here
+    const image_url = "";
+
+    // Validation
+    if (!title || !description || !category || !tags || !quantity || !user_id) {
+      reply.status(400).send({
+        errors: [{ message: "Bad request" }],
+      });
+    }
+
+    const postRef = await firestore().collection("posts").add({
+      title,
+      description,
+      category,
+      tags,
+      quantity,
+      user_id,
+      created_at: firestore.FieldValue.serverTimestamp(),
+      image_url,
+    });
+
+    if (!postRef) {
+      reply.status(500).send({
+        errors: [{ message: "Internal server error" }],
+      });
+    }
+
+    const post = await postRef.get();
+    const userRef = await firestore().collection("users").doc(user_id).get();
+    const user = userSerializer(userRef);
+    reply.code(201).send({
+      message: "Success",
+      data: {
+        post: { ...postSerializer(post), user },
+      },
+    });
   },
   async update(req, reply) {
     const { id } = request.params;
