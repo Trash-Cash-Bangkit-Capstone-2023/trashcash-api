@@ -1,4 +1,4 @@
-const { firestore } = require("firebase-admin");
+const { firestore } = require("../../services/firebase");
 const { userSerializer, postSerializer } = require("../../serializers");
 // Schema
 const postSchema = {

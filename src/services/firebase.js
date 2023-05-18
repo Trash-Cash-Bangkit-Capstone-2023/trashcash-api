@@ -5,6 +5,6 @@ firebaseAdmin.initializeApp({
   credential: firebaseAdmin.credential.cert(serviceAccount),
 });
 
-const firestore = firebaseAdmin.firestore();
-const auth = firebaseAdmin.auth();
+const firestore = firebaseAdmin.firestore;
+const auth = firebaseAdmin.auth;
 module.exports = { firebaseAdmin, firestore, auth };
