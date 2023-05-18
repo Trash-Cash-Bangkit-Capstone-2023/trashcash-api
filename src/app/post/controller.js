@@ -24,18 +24,19 @@ const PostController = {
   async getAll(req, reply) {
     // TODO : Create search by tags
     // TODO : Create search by category
+    // TODO : Filter by user_uid
     const postsRef = await firestore().collection("posts").get();
-    const userIds = postsRef.docs.map((doc) => doc.data().user_id);
+    const userIds = postsRef.docs.map((doc) => doc.data().user_uid);
 
     const usersRef = await firestore()
       .collection("users")
-      .where("id", "in", userIds)
+      .where("uid", "in", userIds)
       .get();
 
     const users = usersRef.docs.map((doc) => userSerializer(doc));
     const posts = postsRef.docs.map((doc) => ({
       ...postSerializer(doc),
-      user: users.find((user) => user.id === doc.data().user_id),
+      user: users.find((user) => user.uid === doc.data().user_uid),
     }));
 
     reply.send({
@@ -54,7 +55,7 @@ const PostController = {
     }
     const userRef = await firestore()
       .collection("users")
-      .doc(postRef.data().user_id)
+      .doc(postRef.data().user_uid)
       .get();
     const user = userSerializer(userRef);
     const post = {
@@ -67,11 +68,25 @@ const PostController = {
     });
   },
   async create(req, reply) {
-    const { title, description, category, tags, quantity, user_id, image_url } =
-      req.body;
+    const {
+      title,
+      description,
+      category,
+      tags,
+      quantity,
+      user_uid,
+      image_url,
+    } = req.body;
 
     // Validation
-    if (!title || !description || !category || !tags || !quantity || !user_id) {
+    if (
+      !title ||
+      !description ||
+      !category ||
+      !tags ||
+      !quantity ||
+      !user_uid
+    ) {
       reply.status(400).send({
         errors: [{ message: "Bad request" }],
       });
@@ -83,7 +98,7 @@ const PostController = {
       category,
       tags,
       quantity,
-      user_id,
+      user_uid,
       created_at: firestore.FieldValue.serverTimestamp(),
       image_url,
     });
@@ -95,7 +110,7 @@ const PostController = {
     }
 
     const post = await postRef.get();
-    const userRef = await firestore().collection("users").doc(user_id).get();
+    const userRef = await firestore().collection("users").doc(user_uid).get();
     const user = userSerializer(userRef);
     reply.code(201).send({
       message: "Success",
@@ -144,7 +159,7 @@ const PostController = {
     const updatedPost = await firestore().collection("posts").doc(id).get();
     const userRef = await firestore()
       .collection("users")
-      .doc(updatedPost.data().user_id)
+      .doc(updatedPost.data().user_uid)
       .get();
     const user = userSerializer(userRef);
 

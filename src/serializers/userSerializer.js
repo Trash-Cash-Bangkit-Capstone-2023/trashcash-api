@@ -1,6 +1,6 @@
 const userSerializer = (userRef) => {
   return {
-    uid: userRef.uid,
+    uid: userRef.id,
     name: userRef.data().name,
     address: userRef.data().address,
     city: userRef.data().city,
