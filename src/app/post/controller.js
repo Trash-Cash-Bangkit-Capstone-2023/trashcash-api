@@ -67,11 +67,8 @@ const PostController = {
     });
   },
   async create(req, reply) {
-    const { title, description, category, tags, quantity, user_id, image } =
+    const { title, description, category, tags, quantity, user_id, image_url } =
       req.body;
-
-    // TODO : Add upload to storage bucket function here
-    const image_url = `https://picsum.photos/500?random=${getRandomNumber()}`;
 
     // Validation
     if (!title || !description || !category || !tags || !quantity || !user_id) {
@@ -109,10 +106,8 @@ const PostController = {
   },
   async update(req, reply) {
     const { id } = req.params;
-    const { title, description, category, tags, quantity, image } = req.body;
-
-    // TODO : Add upload to storage bucket function here
-    const image_url = `https://picsum.photos/500?random=${getRandomNumber()}`;
+    const { title, description, category, tags, quantity, image_url } =
+      req.body;
 
     // Validation
     if (!title || !description || !category || !tags || !quantity) {
