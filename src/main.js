@@ -6,6 +6,7 @@ const cors = require("@fastify/cors");
 const posts = require("./data/dummy-posts");
 const users = require("./data/dummy-users");
 const authRoutes = require("./app/auth/routes");
+const profileRoutes = require("./app/profile/routes");
 
 // Declare a route
 fastify.register(cors, {
@@ -53,6 +54,7 @@ fastify.register(require("@fastify/multipart"));
 
 fastify.register(postRoutes, { prefix: "/v1" });
 fastify.register(authRoutes, { prefix: "/v1" });
+fastify.register(profileRoutes, { prefix: "/v1" });
 
 // Run the server!
 const PORT = process.env.PORT || 8000;
