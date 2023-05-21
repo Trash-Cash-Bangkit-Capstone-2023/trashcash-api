@@ -3,7 +3,7 @@ const { auth, firestore } = require("../../services/firebase");
 
 const AuthController = {
   async register(req, reply) {
-    const { email, password, name, city, address, phone } = req.body;
+    const { email, password, name, province, address, phone } = req.body;
     try {
       const registeredUser = await auth().createUser({
         email,
@@ -21,7 +21,7 @@ const AuthController = {
           email,
           name,
           phone,
-          city,
+          province,
           address,
         });
 

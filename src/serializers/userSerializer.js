@@ -3,7 +3,7 @@ const userSerializer = (userRef) => {
     uid: userRef.id,
     name: userRef.data().name,
     address: userRef.data().address,
-    city: userRef.data().city,
+    province: userRef.data().province,
     phone: userRef.data().phone,
     email: userRef.data().email,
     created_at: userRef.createTime.toDate(),
