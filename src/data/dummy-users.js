@@ -7,7 +7,7 @@ const userSchema = {
   createdAt: Date,
   updatedAt: Date,
   province: String,
-  city: String,
+  province: String,
   address: String,
 };
 
