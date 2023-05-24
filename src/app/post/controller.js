@@ -1,5 +1,6 @@
 const { firestore } = require("../../services/firebase");
 const { userSerializer, postSerializer } = require("../../serializers");
+const imageUploader = require('../../utils/imageUploader')
 // Schema
 const postSchema = {
   type: "object",
@@ -100,7 +101,7 @@ const PostController = {
       quantity,
       user_uid,
       created_at: firestore.FieldValue.serverTimestamp(),
-      image_url,
+      image_url: url,
     });
 
     if (!postRef) {

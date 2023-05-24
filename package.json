@@ -11,6 +11,7 @@
     "@fastify/cors": "^8.2.0",
     "@fastify/formbody": "^7.4.0",
     "@fastify/multipart": "^7.6.0",
+    "@google-cloud/storage": "^6.10.1",
     "@supabase/supabase-js": "^2.8.0",
     "date-fns": "^2.29.3",
     "date-fns-tz": "^2.0.0",
