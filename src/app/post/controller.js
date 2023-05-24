@@ -1,6 +1,5 @@
 const { firestore } = require("../../services/firebase");
 const { userSerializer, postSerializer } = require("../../serializers");
-const imageUploader = require('../../utils/imageUploader')
 // Schema
 const postSchema = {
   type: "object",
@@ -199,6 +198,8 @@ const PostController = {
       },
     });
   },
+
 };
+
 
 module.exports = PostController;
