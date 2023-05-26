@@ -100,7 +100,7 @@ const PostController = {
       quantity,
       user_uid,
       created_at: firestore.FieldValue.serverTimestamp(),
-      image_url: url,
+      image_url,
     });
 
     if (!postRef) {
@@ -198,8 +198,6 @@ const PostController = {
       },
     });
   },
-
 };
-
 
 module.exports = PostController;
