@@ -19,9 +19,11 @@
     "date-fns-tz": "^2.0.0",
     "dotenv": "^16.0.3",
     "fastify": "^4.13.0",
+    "firebase": "^9.22.0",
     "firebase-admin": "^11.8.0",
     "lodash": "^4.17.21",
-    "sharp": "^0.32.1"
+    "sharp": "^0.32.1",
+    "jsonwebtoken": "^9.0.0"
   },
   "engines": {
     "node": ">= 16.x.x && <= 18.x.x"
