@@ -22,10 +22,21 @@ const getRandomNumber = () => {
 
 const PostController = {
   async getAll(req, reply) {
-    // TODO : Create search by tags
-    // TODO : Create search by category
-    // TODO : Filter by user_uid
-    const postsRef = await firestore().collection("posts").get();
+    const { tags, category, user_uid } = req.query;
+
+    let query = firestore().collection("posts");
+
+    if (tags) {
+      query = query.where("tags", "array-contains-any", tags.split(","));
+    }
+    if (category) {
+      query = query.where("category", "==", category);
+    }
+    if (user_uid) {
+      query = query.where("user_uid", "==", user_uid);
+    }
+
+    const postsRef = await query.get();
     const userIds = postsRef.docs.map((doc) => doc.data().user_uid);
 
     const usersRef = await firestore()

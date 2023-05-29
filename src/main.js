@@ -4,6 +4,7 @@ const fastify = require("fastify")({ logger: true });
 const cors = require("@fastify/cors");
 const tf = require("@tensorflow/tfjs-node");
 const sharp = require("sharp");
+const {login} = require("./services/firebase")
 
 // Routes
 const postRoutes = require("./app/post/routes");
@@ -28,7 +29,7 @@ fastify.register(authRoutes, { prefix: "/v1" });
 fastify.register(postRoutes, { prefix: "/v1" });
 fastify.register(imageRoutes, { prefix: "/v1" });
 fastify.register(usersRoutes, { prefix: "/v1" });
-
+fastify.post("/v1/auth/login", login);
 // Image classification
 fastify.post("/v1/image/predict", async (request, reply) => {
   const model = await tf.loadLayersModel(
