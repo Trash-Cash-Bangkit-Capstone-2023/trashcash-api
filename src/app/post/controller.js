@@ -37,6 +37,11 @@ const PostController = {
     }
 
     const postsRef = await query.get();
+    if (postsRef.empty) {
+      reply.status(404).send({
+        errors: [{ message: "Post not found" }],
+      });
+    }
     const userIds = postsRef.docs.map((doc) => doc.data().user_uid);
 
     const usersRef = await firestore()
