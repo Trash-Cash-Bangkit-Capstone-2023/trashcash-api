@@ -9,6 +9,7 @@ const sharp = require("sharp");
 const postRoutes = require("./app/post/routes");
 const imageRoutes = require("./app/image/routes");
 const authRoutes = require("./app/auth/routes");
+const usersRoutes = require("./app/users/routes");
 
 // Middlewares
 fastify.register(require("@fastify/formbody"));
@@ -26,6 +27,7 @@ fastify.register(cors, {
 fastify.register(authRoutes, { prefix: "/v1" });
 fastify.register(postRoutes, { prefix: "/v1" });
 fastify.register(imageRoutes, { prefix: "/v1" });
+fastify.register(usersRoutes, { prefix: "/v1" });
 
 // Image classification
 fastify.post("/v1/image/predict", async (request, reply) => {
