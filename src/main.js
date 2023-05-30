@@ -4,13 +4,14 @@ const fastify = require("fastify")({ logger: true });
 const cors = require("@fastify/cors");
 const tf = require("@tensorflow/tfjs-node");
 const sharp = require("sharp");
-const {login} = require("./services/firebase")
+const { login } = require("./services/firebase");
 
 // Routes
 const postRoutes = require("./app/post/routes");
 const imageRoutes = require("./app/image/routes");
 const authRoutes = require("./app/auth/routes");
 const usersRoutes = require("./app/users/routes");
+const profileRotes = require("./app/profile/routes");
 
 // Middlewares
 fastify.register(require("@fastify/formbody"));
@@ -29,6 +30,7 @@ fastify.register(authRoutes, { prefix: "/v1" });
 fastify.register(postRoutes, { prefix: "/v1" });
 fastify.register(imageRoutes, { prefix: "/v1" });
 fastify.register(usersRoutes, { prefix: "/v1" });
+fastify.register(profileRotes, { prefix: "/v1" });
 fastify.post("/v1/auth/login", login);
 // Image classification
 fastify.post("/v1/image/predict", async (request, reply) => {
