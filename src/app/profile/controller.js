@@ -14,13 +14,11 @@ const ProfileController = {
   },
   async update(req, reply) {
     const { user } = req;
-    const { name, province, address, phone, email } = req.body;
+    const { name, province, address, phone } = req.body;
 
     const userAuthRef = auth().updateUser(user.uid, {
       displayName: name,
       phoneNumber: phone,
-      email,
-      emailVerified: true,
     });
 
     const userRef = await firestore().collection("users").doc(user.uid).update({
@@ -28,7 +26,6 @@ const ProfileController = {
       province,
       address,
       phone,
-      email,
     });
 
     if (!userRef || !userAuthRef) {
