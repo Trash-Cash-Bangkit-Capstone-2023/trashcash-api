@@ -7,7 +7,7 @@ async function uploadFile(params) {
       reject("No file uploaded");
     }
     const { filename, mimetype, file: stream } = file;
-    const bucket = storage.bucket("trashcash-bucket-dev");
+    const bucket = storage.bucket("trashcash-project-bucket");
     const fileUpload = bucket.file(filename);
     stream
       .pipe(fileUpload.createWriteStream())

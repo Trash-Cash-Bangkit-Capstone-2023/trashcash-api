@@ -12,13 +12,13 @@ const auth = firebaseAdmin.auth;
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBdMqCInK78bFIWdVgPf7Or30f-q6SvRDE",
-  authDomain: "trashcash-dev.firebaseapp.com",
-  projectId: "trashcash-dev",
-  storageBucket: "trashcash-dev.appspot.com",
-  messagingSenderId: "666278062343",
-  appId: "1:666278062343:web:04841b42ffbb5abfe1fda2",
-  measurementId: "G-6VZYBEN13E",
+  apiKey: "AIzaSyAgqzOlVFkPUKp1rfcEB3SScr5gEqiIgfE",
+  authDomain: "trashcash-project.firebaseapp.com",
+  projectId: "trashcash-project",
+  storageBucket: "trashcash-project.appspot.com",
+  messagingSenderId: "145498092087",
+  appId: "1:145498092087:web:f6a82b21d5f33ff57005b2",
+  measurementId: "G-P7HY2P7SWD",
 };
 // Initialize Firebase
 const firebaseClientApp = initializeApp(firebaseConfig);
