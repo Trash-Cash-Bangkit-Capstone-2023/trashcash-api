@@ -12,6 +12,7 @@ const imageRoutes = require("./app/image/routes");
 const authRoutes = require("./app/auth/routes");
 const usersRoutes = require("./app/users/routes");
 const profileRotes = require("./app/profile/routes");
+const tagRoutes = require("./app/tag/routes");
 
 // Middlewares
 fastify.register(require("@fastify/formbody"));
@@ -31,6 +32,7 @@ fastify.register(postRoutes, { prefix: "/v1" });
 fastify.register(imageRoutes, { prefix: "/v1" });
 fastify.register(usersRoutes, { prefix: "/v1" });
 fastify.register(profileRotes, { prefix: "/v1" });
+fastify.register(tagRoutes, { prefix: "/v1" });
 fastify.post("/v1/auth/login", login);
 // Image classification
 fastify.post("/v1/image/predict", async (request, reply) => {
