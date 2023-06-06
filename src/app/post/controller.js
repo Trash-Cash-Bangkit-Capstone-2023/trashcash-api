@@ -92,6 +92,7 @@ const PostController = {
       quantity,
       user_uid,
       image_url,
+      price = 0,
     } = req.body;
 
     // Validation
@@ -117,6 +118,7 @@ const PostController = {
       user_uid,
       created_at: firestore.FieldValue.serverTimestamp(),
       image_url,
+      price,
     });
 
     if (!postRef) {
@@ -137,8 +139,15 @@ const PostController = {
   },
   async update(req, reply) {
     const { id } = req.params;
-    const { title, description, category, tags, quantity, image_url } =
-      req.body;
+    const {
+      title,
+      description,
+      category,
+      tags,
+      quantity,
+      image_url,
+      price = 0,
+    } = req.body;
 
     // Validation
     if (!title || !description || !category || !tags || !quantity) {
@@ -164,6 +173,7 @@ const PostController = {
         tags,
         quantity,
         image_url,
+        price,
       });
 
     if (!updatedPostRef) {

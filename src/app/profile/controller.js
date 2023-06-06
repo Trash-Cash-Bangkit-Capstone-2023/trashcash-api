@@ -14,7 +14,7 @@ const ProfileController = {
   },
   async update(req, reply) {
     const { user } = req;
-    const { name, province, address, phone } = req.body;
+    const { name, province, address, phone, image_url = "" } = req.body;
 
     const userAuthRef = auth().updateUser(user.uid, {
       displayName: name,
@@ -26,6 +26,7 @@ const ProfileController = {
       province,
       address,
       phone,
+      image_url,
     });
 
     if (!userRef || !userAuthRef) {
@@ -50,7 +51,6 @@ const ProfileController = {
         user: userSerializer(updatedUserRef),
       },
     });
-    // TODO : Update image
   },
 };
 
