@@ -1,3 +1,4 @@
+require("dotenv").config();
 const firebaseAdmin = require("firebase-admin");
 const serviceAccount = require("../serviceAccount.json");
 const { signInWithEmailAndPassword, getAuth } = require("firebase/auth");
@@ -10,16 +11,16 @@ firebaseAdmin.initializeApp({
 const firestore = firebaseAdmin.firestore;
 const auth = firebaseAdmin.auth;
 
-
 const firebaseConfig = {
-  apiKey: "AIzaSyAgqzOlVFkPUKp1rfcEB3SScr5gEqiIgfE",
-  authDomain: "trashcash-project.firebaseapp.com",
-  projectId: "trashcash-project",
-  storageBucket: "trashcash-project.appspot.com",
-  messagingSenderId: "145498092087",
-  appId: "1:145498092087:web:f6a82b21d5f33ff57005b2",
-  measurementId: "G-P7HY2P7SWD",
+  apiKey: process.env.FIREBASE_APIKEY,
+  authDomain: process.env.FIREBASE_AUTHDOMAIN,
+  projectId: process.env.FIREBASE_PROJECTID,
+  storageBucket: process.env.FIREBASE_STORAGEBUCKET,
+  messagingSenderId: process.env.FIREBASE_MESSAGINGSENDERID,
+  appId: process.env.FIREBASE_APPID,
+  measurementId: process.env.FIREBASE_MEASUREMENTID,
 };
+
 // Initialize Firebase
 const firebaseClientApp = initializeApp(firebaseConfig);
 
@@ -28,7 +29,7 @@ const login = async (req, reply) => {
     const userCredential = await signInWithEmailAndPassword(
       getAuth(),
       req.body.email,
-      req.body.password
+      req.body.password,
     );
     const token = await userCredential.user.getIdToken();
 
