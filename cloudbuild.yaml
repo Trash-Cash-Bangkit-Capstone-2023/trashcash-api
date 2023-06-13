@@ -32,9 +32,5 @@ steps:
       - |
           gcloud secrets versions access latest --secret="gcs_key" > /workspace/src/serviceAccountCloudStorage.json
 
-  - name: node:16.0.0
-    entrypoint: yarn
-    args: ["run",'start']
-
   - name: "gcr.io/cloud-builders/gcloud"
     args: ["app", "deploy"]
