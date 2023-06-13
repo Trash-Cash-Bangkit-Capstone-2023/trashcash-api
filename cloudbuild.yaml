@@ -1,9 +1,9 @@
 steps:
-  - name: 'gcr.io/cloud-builders/yarn'
+  - name: 'gcr.io/cloud-builders/npm'
     args: ['install']
 
-  - name: gcr.io/cloud-builders/yarn'
-    args: ["create-env"]
+  - name: gcr.io/cloud-builders/npm'
+    args: ["run","create-env"]
     env:
       - 'PORT=${_PORT}'
       - 'HOST=${_HOST}'
@@ -15,8 +15,8 @@ steps:
       - 'FIREBASE_APPID=${_FIREBASE_APPID}'
       - 'FIREBASE_MEASUREMENTID=${_FIREBASE_MEASUREMENTID}'
 
-  - name: 'gcr.io/cloud-builders/yarn'
-    args: ['start']
+  - name: 'gcr.io/cloud-builders/npm'
+    args: ["run",'start']
 
   - name: "gcr.io/cloud-builders/gcloud"
     args: ["app", "deploy"]
