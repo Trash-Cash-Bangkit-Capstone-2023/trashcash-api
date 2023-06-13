@@ -19,4 +19,4 @@ steps:
     args: ['start']
 
   - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['app', 'deploy']
+     args: ['app', 'deploy', '--project', 'trashcash-project', '--region', 'asia-southeast2']
