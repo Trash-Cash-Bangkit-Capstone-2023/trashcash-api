@@ -1,0 +1,22 @@
+steps:
+  - name: 'gcr.io/cloud-builders/yarn'
+    args: ['install']
+
+  - name: gcr.io/cloud-builders/yarn'
+    args: ["create-env"]
+    env:
+      - 'PORT=${_PORT}'
+      - 'HOST=${_HOST}'
+      - 'FIREBASE_APIKEY=${_FIREBASE_APIKEY}'
+      - 'FIREBASE_APIKEY=${_FIREBASE_APIKEY}'
+      - 'FIREBASE_PROJECTID=${_FIREBASE_PROJECTID}'
+      - 'FIREBASE_STORAGEBUCKET=${_FIREBASE_STORAGEBUCKET}'
+      - 'FIREBASE_MESSAGINGSENDERID=${_FIREBASE_MESSAGINGSENDERID}'
+      - 'FIREBASE_APPID=${_FIREBASE_APPID}'
+      - 'FIREBASE_MEASUREMENTID=${_FIREBASE_MEASUREMENTID}'
+
+  - name: 'gcr.io/cloud-builders/yarn'
+    args: ['start']
+
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args: ['app', 'deploy']

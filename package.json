@@ -5,7 +5,8 @@
   "main": "main.js",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon src/main.js"
+    "start": "nodemon src/main.js",
+    "create-env": "printenv > .env"
   },
   "dependencies": {
     "@fastify/cors": "^8.2.0",
