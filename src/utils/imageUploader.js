@@ -1,4 +1,4 @@
-const storage = require('../services/gcs')
+const storage = require("../services/gcs");
 
 async function uploadFile(params) {
   const file = await params.file();
@@ -12,17 +12,17 @@ async function uploadFile(params) {
     stream
       .pipe(fileUpload.createWriteStream())
       .on("error", (err) => {
-        reject(err)
+        reject(err);
       })
       .on("finish", async () => {
         await fileUpload.makePublic();
 
-        const url = `https://storage.googleapis.com/trashcash-bucket-dev/${filename}`;
+        const url = `https://storage.googleapis.com/trashcash-project-bucket/${filename}`;
 
-        resolve(url)
+        resolve(url);
       });
   });
-  
+
   // try {
   //   const file = await params.file();
   //   if (!file) {
