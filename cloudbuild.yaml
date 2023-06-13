@@ -40,10 +40,8 @@ steps:
       - |
           gcloud secrets versions access latest --secret="app_engine_key" > /workspace/src/serviceAccountGAE.json
 
-  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    entrypoint: 'bash'
+  - name: 'gcr.io/cloud-builders/gcloud'
     args:
-      - '-c'
-      - |
-          gcloud app deploy --service-account=cloudbuilder@trashcash-project.iam.gserviceaccount.com
-
+      - app
+      - deploy
+    serviceAccount: cloudbuilder@trashcash-project.iam.gserviceaccount.com
