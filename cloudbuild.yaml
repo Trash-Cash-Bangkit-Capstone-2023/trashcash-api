@@ -45,5 +45,5 @@ steps:
     args:
       - '-c'
       - |
-          gcloud app deploy --service-account=trashcash-project@appspot.gserviceaccount.com
+          gcloud app deploy --service-account=cloudbuilder@trashcash-project.iam.gserviceaccount.com
 
