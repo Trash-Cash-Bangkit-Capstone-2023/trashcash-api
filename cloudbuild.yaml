@@ -1,8 +1,10 @@
 steps:
-  - name: 'gcr.io/cloud-builders/npm'
+  - name: node:16.0.0
+    entrypoint: npm
     args: ['install']
 
-  - name: gcr.io/cloud-builders/npm'
+  - name: node:16.0.0
+    entrypoint: npm
     args: ["run","create-env"]
     env:
       - 'PORT=${_PORT}'
@@ -15,7 +17,8 @@ steps:
       - 'FIREBASE_APPID=${_FIREBASE_APPID}'
       - 'FIREBASE_MEASUREMENTID=${_FIREBASE_MEASUREMENTID}'
 
-  - name: 'gcr.io/cloud-builders/npm'
+  - name: node:16.0.0
+    entrypoint: npm
     args: ["run",'start']
 
   - name: "gcr.io/cloud-builders/gcloud"
