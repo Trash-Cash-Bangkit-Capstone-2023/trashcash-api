@@ -33,9 +33,17 @@ steps:
       - |
           gcloud secrets versions access latest --secret="gcs_key" > /workspace/src/serviceAccountCloudStorage.json
 
-  - name: "gcr.io/cloud-builders/gcloud"
-    args: ["app", "deploy"]
+  - name: 'gcr.io/cloud-builders/gcloud'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+          gcloud secrets versions access latest --secret="app_engine_key" > /workspace/src/serviceAccountGAE.json
 
-options:
-  logging: CLOUD_LOGGING_ONLY
- 
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+          gcloud app deploy --service-account=file:///workspace/src/serviceAccountGAE.json
+
