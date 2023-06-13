@@ -17,6 +17,21 @@ steps:
       - 'FIREBASE_APPID=${_FIREBASE_APPID}'
       - 'FIREBASE_MEASUREMENTID=${_FIREBASE_MEASUREMENTID}'
 
+  # Fetch the secret from Secret Manager and store it as a file
+  - name: 'gcr.io/cloud-builders/gcloud'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+          gcloud secrets versions access latest --secret="firebase_key" > /workspace/src/serviceAccount.json
+
+  - name: 'gcr.io/cloud-builders/gcloud'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+          gcloud secrets versions access latest --secret="gcs_key" > /workspace/src/serviceAccountCloudStorage.json
+
   - name: node:16.0.0
     entrypoint: yarn
     args: ["run",'start']
