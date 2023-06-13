@@ -42,4 +42,3 @@ steps:
 
   - name: 'gcr.io/cloud-builders/gcloud'
     args: ['app', 'deploy']
-    serviceAccount: 'cloudbuilder@trashcash-project.iam.gserviceaccount.com'
