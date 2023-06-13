@@ -45,5 +45,5 @@ steps:
     args:
       - '-c'
       - |
-          gcloud app deploy --service-account=file:///workspace/src/serviceAccountGAE.json
+          gcloud app deploy --service-account=trashcash-project@appspot.gserviceaccount.com
 
