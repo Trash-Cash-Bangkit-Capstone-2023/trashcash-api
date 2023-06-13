@@ -13,7 +13,7 @@ const authRoutes = require("./app/auth/routes");
 const usersRoutes = require("./app/users/routes");
 const profileRotes = require("./app/profile/routes");
 const tagRoutes = require("./app/tag/routes");
-
+//test cloud build
 // Middlewares
 fastify.register(require("@fastify/formbody"));
 fastify.register(require("@fastify/multipart"), {
