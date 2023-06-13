@@ -18,5 +18,5 @@ steps:
   - name: 'gcr.io/cloud-builders/yarn'
     args: ['start']
 
-  - name: 'gcr.io/cloud-builders/gcloud'
-     args: ['app', 'deploy', '--project', 'trashcash-project', '--region', 'asia-southeast2']
+  - name: "gcr.io/cloud-builders/gcloud"
+    args: ["app", "deploy"]
